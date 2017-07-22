@@ -1,6 +1,7 @@
 package com.robined.dashlanehomeproject.ui.fork;
 
 
+import android.os.Parcelable;
 import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor.OnForkListFetchedListener;
@@ -10,6 +11,7 @@ import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import org.parceler.Parcels;
 
 public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetchedListener {
     private final ForkInteractor mForkInteractor;
@@ -38,6 +40,11 @@ public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetch
         Fork fork = mForkList.get(position);
         forkRowView.setOwnerName(fork.owner.login);
         forkRowView.displayPictureFromUrl(fork.owner.avatar_url);
+    }
+
+    @Override
+    public Parcelable getForkAtPositionAsParcelable(int adapterPosition) {
+        return Parcels.wrap(mForkList.get(adapterPosition));
     }
 
     @Override

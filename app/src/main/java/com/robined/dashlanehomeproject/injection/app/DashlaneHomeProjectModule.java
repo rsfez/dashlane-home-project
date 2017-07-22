@@ -2,6 +2,8 @@ package com.robined.dashlanehomeproject.injection.app;
 
 
 import android.content.Context;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import dagger.Module;
 import dagger.Provides;
@@ -20,8 +22,12 @@ public class DashlaneHomeProjectModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit() {
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+
         return new Retrofit.Builder().baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create()).build();
+                .addConverterFactory(GsonConverterFactory.create(gson)).build();
     }
 
     @Provides

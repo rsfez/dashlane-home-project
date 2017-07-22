@@ -1,7 +1,10 @@
 package com.robined.dashlanehomeproject.ui.fork.views;
 
 
+import static com.robined.dashlanehomeproject.ui.fork.ForkDetailsActivity.FORK_PARCEL_KEY;
+
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +61,10 @@ public class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdap
 
         @Override
         public void onClick(View view) {
+            Parcelable fork
+                    = mForkListPresenter.getForkAtPositionAsParcelable(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ForkDetailsActivity.class);
+            intent.putExtra(FORK_PARCEL_KEY, fork);
             view.getContext().startActivity(intent);
         }
 
