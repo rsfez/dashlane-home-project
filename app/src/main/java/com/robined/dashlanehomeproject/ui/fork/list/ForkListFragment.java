@@ -1,4 +1,4 @@
-package com.robined.dashlanehomeproject.ui.fork;
+package com.robined.dashlanehomeproject.ui.fork.list;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
 import com.robined.dashlanehomeproject.injection.fork.ForkModule;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
-import com.robined.dashlanehomeproject.ui.fork.views.ForksRecyclerAdapter;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
+import com.robined.dashlanehomeproject.ui.fork.list.views.ForksRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 

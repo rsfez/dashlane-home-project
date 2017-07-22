@@ -1,4 +1,4 @@
-package com.robined.dashlanehomeproject.ui.fork.contracts;
+package com.robined.dashlanehomeproject.ui.fork.list.contracts;
 
 
 import android.os.Parcelable;

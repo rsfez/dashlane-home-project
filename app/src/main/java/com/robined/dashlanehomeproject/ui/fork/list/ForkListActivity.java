@@ -1,6 +1,4 @@
-package com.robined.dashlanehomeproject.ui.fork;
-
-import static com.robined.dashlanehomeproject.ui.fork.ForkListFragment.FORK_LIST_FRAGMENT_TAG;
+package com.robined.dashlanehomeproject.ui.fork.list;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -18,11 +16,11 @@ public class ForkListActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getFragmentManager();
         ForkListFragment forkListFragment = (ForkListFragment) fragmentManager
-                .findFragmentByTag(FORK_LIST_FRAGMENT_TAG);
+                .findFragmentByTag(ForkListFragment.FORK_LIST_FRAGMENT_TAG);
         if(forkListFragment == null) {
             forkListFragment = new ForkListFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.fork_list_fragment_placeholder, forkListFragment, FORK_LIST_FRAGMENT_TAG)
+                    .replace(R.id.fork_list_fragment_placeholder, forkListFragment, ForkListFragment.FORK_LIST_FRAGMENT_TAG)
                     .commit();
         }
     }

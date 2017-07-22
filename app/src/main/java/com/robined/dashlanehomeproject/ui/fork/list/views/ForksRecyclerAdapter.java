@@ -1,7 +1,7 @@
-package com.robined.dashlanehomeproject.ui.fork.views;
+package com.robined.dashlanehomeproject.ui.fork.list.views;
 
 
-import static com.robined.dashlanehomeproject.ui.fork.ForkDetailsActivity.FORK_PARCEL_KEY;
+import static com.robined.dashlanehomeproject.ui.fork.details.ForkDetailsActivity.FORK_PARCEL_KEY;
 
 import android.content.Intent;
 import android.os.Parcelable;
@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.ui.fork.ForkDetailsActivity;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
+import com.robined.dashlanehomeproject.ui.fork.details.ForkDetailsActivity;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkRowView;
 import com.squareup.picasso.Picasso;
 
 public class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdapter.ForkViewHolder> {

@@ -1,13 +1,13 @@
-package com.robined.dashlanehomeproject.ui.fork;
+package com.robined.dashlanehomeproject.ui.fork.list;
 
 
 import android.os.Parcelable;
 import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor.OnForkListFetchedListener;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkRowView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
