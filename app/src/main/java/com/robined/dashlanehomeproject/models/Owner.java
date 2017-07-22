@@ -1,9 +1,9 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.models;
 
 
 public class Owner {
-    String login;
-    String avatar_url;
+    public String login;
+    public String avatar_url;
 
     @Override
     public String toString() {

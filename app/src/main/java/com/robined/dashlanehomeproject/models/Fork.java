@@ -1,9 +1,9 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.models;
 
 
 public class Fork {
     String name;
-    Owner owner;
+    public Owner owner;
 
     @Override
     public String toString() {
