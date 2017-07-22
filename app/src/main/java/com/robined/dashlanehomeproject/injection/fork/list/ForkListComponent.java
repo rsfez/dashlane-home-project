@@ -1,7 +1,7 @@
 package com.robined.dashlanehomeproject.injection.fork.list;
 
 
-import com.robined.dashlanehomeproject.injection.PicassoModule;
+import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.ui.fork.list.ForkListFragment;
 import dagger.Subcomponent;
 import javax.inject.Singleton;

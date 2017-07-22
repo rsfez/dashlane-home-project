@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.PicassoModule;
+import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.injection.fork.list.ForkListModule;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;

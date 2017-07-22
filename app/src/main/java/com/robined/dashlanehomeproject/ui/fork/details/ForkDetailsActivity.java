@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.PicassoModule;
+import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.injection.fork.details.ForkDetailsModule;
 import com.robined.dashlanehomeproject.ui.fork.details.contracts.ForkDetailsPresenter;
 import com.robined.dashlanehomeproject.ui.fork.details.contracts.ForkDetailsView;
