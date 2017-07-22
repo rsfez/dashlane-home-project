@@ -34,8 +34,8 @@ class ForkPresenterImpl implements ForkPresenter, OnForkListFetchedListener {
     @Override
     public void onBindForkViewHolderAtPosition(int position, ForkRowView forkRowView) {
         Fork fork = mForkList.get(position);
-        forkRowView.setOwnerName(fork.mForkOwner.login);
-        forkRowView.displayPictureFromUrl(fork.mForkOwner.avatar_url);
+        forkRowView.setOwnerName(fork.owner.login);
+        forkRowView.displayPictureFromUrl(fork.owner.avatar_url);
     }
 
     @Override
