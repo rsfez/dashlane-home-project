@@ -1,8 +1,9 @@
 package com.robined.dashlanehomeproject.ui.fork;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
@@ -15,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
 
-public class ForkListActivity extends Activity implements ForkListView {
+public class ForkListActivity extends AppCompatActivity implements ForkListView {
     @Inject ForkPresenter mForkPresenter;
     @Inject Picasso mPicasso;
 
@@ -26,16 +27,23 @@ public class ForkListActivity extends Activity implements ForkListView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fork_list_activity);
 
-        RecyclerView forkRecyclerView = findViewById(R.id.fork_recycler_view);
-
         ((DashlaneHomeProject) getApplicationContext()).getDashlaneHomeProjectComponent()
                 .plus(new ForkModule(this)).inject(this);
 
         mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkPresenter, mPicasso);
-        forkRecyclerView.setAdapter(mForksRecyclerAdapter);
-        forkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setupRecyclerView();
 
         mForkPresenter.getForkList();
+    }
+
+    private void setupRecyclerView() {
+        RecyclerView forkRecyclerView = (RecyclerView) findViewById(R.id.fork_recycler_view);
+        forkRecyclerView.setAdapter(mForksRecyclerAdapter);
+        forkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        forkRecyclerView.setHasFixedSize(true);
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        forkRecyclerView.addItemDecoration(itemDecoration);
     }
 
     @Override
