@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.fork.ForkModule;
+import com.robined.dashlanehomeproject.injection.fork.list.ForkListModule;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
-import com.robined.dashlanehomeproject.ui.fork.list.views.ForksRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
@@ -33,7 +32,7 @@ public class ForkListFragment extends Fragment implements ForkListView {
         super.onCreate(savedInstanceState);
         ((DashlaneHomeProject) getActivity().getApplicationContext())
                 .getDashlaneHomeProjectComponent()
-                .plus(new ForkModule(this)).inject(this);
+                .plus(new ForkListModule(this)).inject(this);
         setRetainInstance(true);
         mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkListPresenter, mPicasso);
 

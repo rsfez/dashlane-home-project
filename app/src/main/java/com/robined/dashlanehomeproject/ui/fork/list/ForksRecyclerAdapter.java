@@ -1,4 +1,4 @@
-package com.robined.dashlanehomeproject.ui.fork.list.views;
+package com.robined.dashlanehomeproject.ui.fork.list;
 
 
 import static com.robined.dashlanehomeproject.ui.fork.details.ForkDetailsActivity.FORK_PARCEL_KEY;

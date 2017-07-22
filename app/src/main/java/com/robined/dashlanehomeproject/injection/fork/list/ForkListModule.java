@@ -1,4 +1,4 @@
-package com.robined.dashlanehomeproject.injection.fork;
+package com.robined.dashlanehomeproject.injection.fork.list;
 
 
 import android.content.Context;
@@ -15,10 +15,10 @@ import javax.inject.Singleton;
 import retrofit2.Retrofit;
 
 @Module
-public class ForkModule {
+public class ForkListModule {
     private final ForkListView mForkListView;
 
-    public ForkModule(ForkListView forkListView) {
+    public ForkListModule(ForkListView forkListView) {
         mForkListView = forkListView;
     }
 
