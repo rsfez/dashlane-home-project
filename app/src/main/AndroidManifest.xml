@@ -19,6 +19,7 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".ui.fork.ForkDetailsActivity" android:theme="@style/ForkDetailsTheme" />
   </application>
 
 </manifest>
