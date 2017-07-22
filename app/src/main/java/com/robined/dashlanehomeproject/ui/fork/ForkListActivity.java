@@ -5,22 +5,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
-import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractorImpl;
-import com.robined.dashlanehomeproject.data.fork.network.ForkService;
+import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
+import com.robined.dashlanehomeproject.injection.fork.ForkModule;
 import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
 import com.robined.dashlanehomeproject.ui.fork.contracts.ForkPresenter;
 import com.robined.dashlanehomeproject.ui.fork.views.ForksRecyclerAdapter;
 import com.squareup.picasso.Picasso;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import javax.inject.Inject;
 
 
 public class ForkListActivity extends Activity implements ForkListView {
+    @Inject ForkPresenter mForkPresenter;
+    @Inject Picasso mPicasso;
 
-    ForkPresenter mForkPresenter;
-    Picasso mPicasso;
     private ForksRecyclerAdapter mForksRecyclerAdapter;
 
     @Override
@@ -30,14 +28,8 @@ public class ForkListActivity extends Activity implements ForkListView {
 
         RecyclerView forkRecyclerView = findViewById(R.id.fork_recycler_view);
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.github.com/")
-                .addConverterFactory(
-                GsonConverterFactory.create()).build();
-        ForkService forkService = retrofit.create(ForkService.class);
-        ForkInteractor forkInteractor = new ForkInteractorImpl(forkService);
-
-        mPicasso = new Picasso.Builder(this).build();
-        mForkPresenter = new ForkPresenterImpl(forkInteractor, this);
+        ((DashlaneHomeProject) getApplicationContext()).getDashlaneHomeProjectComponent()
+                .plus(new ForkModule(this)).inject(this);
 
         mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkPresenter, mPicasso);
         forkRecyclerView.setAdapter(mForksRecyclerAdapter);

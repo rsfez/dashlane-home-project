@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import com.robined.dashlanehomeproject.data.fork.network.ForkService;
 import java.util.List;
+import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,7 +14,7 @@ public class ForkInteractorImpl implements ForkInteractor, Callback<List<Fork>> 
     private final ForkService mForkService;
     private OnForkListFetchedListener mListener;
 
-    public ForkInteractorImpl(ForkService forkService) {
+    @Inject ForkInteractorImpl(ForkService forkService) {
         mForkService = forkService;
     }
 
