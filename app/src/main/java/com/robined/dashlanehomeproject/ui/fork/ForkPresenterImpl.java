@@ -10,12 +10,12 @@ import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForkPresenterImpl implements ForkPresenter, OnForkListFetchedListener {
+class ForkPresenterImpl implements ForkPresenter, OnForkListFetchedListener {
     private final ForkInteractor mForkInteractor;
     private final ForkListView mForkListView;
     private final List<Fork> mForkList;
 
-    public ForkPresenterImpl(ForkInteractor forkInteractor, ForkListView forkListView) {
+    ForkPresenterImpl(ForkInteractor forkInteractor, ForkListView forkListView) {
         mForkInteractor = forkInteractor;
         mForkListView = forkListView;
         mForkList = new ArrayList<>();
