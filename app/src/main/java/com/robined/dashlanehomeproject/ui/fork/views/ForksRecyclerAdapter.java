@@ -11,16 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.robined.dashlanehomeproject.R;
 import com.robined.dashlanehomeproject.ui.fork.ForkDetailsActivity;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkPresenter;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
 import com.squareup.picasso.Picasso;
 
 public class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdapter.ForkViewHolder> {
-    private final ForkPresenter mForkPresenter;
+    private final ForkListPresenter mForkListPresenter;
     private final Picasso mPicasso;
 
-    public ForksRecyclerAdapter(ForkPresenter forkPresenter, Picasso picasso) {
-        mForkPresenter = forkPresenter;
+    public ForksRecyclerAdapter(ForkListPresenter forkListPresenter, Picasso picasso) {
+        mForkListPresenter = forkListPresenter;
         mPicasso = picasso;
     }
 
@@ -33,12 +33,12 @@ public class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdap
 
     @Override
     public void onBindViewHolder(ForkViewHolder holder, int position) {
-        mForkPresenter.onBindForkViewHolderAtPosition(position, holder);
+        mForkListPresenter.onBindForkViewHolderAtPosition(position, holder);
     }
 
     @Override
     public int getItemCount() {
-        return mForkPresenter.getForkCount();
+        return mForkListPresenter.getForkCount();
     }
 
     final class ForkViewHolder extends RecyclerView.ViewHolder implements ForkRowView,

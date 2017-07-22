@@ -13,7 +13,7 @@ import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
 import com.robined.dashlanehomeproject.injection.fork.ForkModule;
 import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkPresenter;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.views.ForksRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ import javax.inject.Inject;
 public class ForkListFragment extends Fragment implements ForkListView {
     public static final String FORK_LIST_FRAGMENT_TAG = "FORK_LIST_FRAGMENT_TAG";
 
-    @Inject ForkPresenter mForkPresenter;
+    @Inject ForkListPresenter mForkListPresenter;
     @Inject Picasso mPicasso;
 
     private ForksRecyclerAdapter mForksRecyclerAdapter;
@@ -35,7 +35,7 @@ public class ForkListFragment extends Fragment implements ForkListView {
                 .getDashlaneHomeProjectComponent()
                 .plus(new ForkModule(this)).inject(this);
         setRetainInstance(true);
-        mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkPresenter, mPicasso);
+        mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkListPresenter, mPicasso);
 
     }
 
@@ -50,7 +50,7 @@ public class ForkListFragment extends Fragment implements ForkListView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         setupRecyclerView(view);
 
-        mForkPresenter.getForkList();
+        mForkListPresenter.getForkList();
     }
 
     @Override

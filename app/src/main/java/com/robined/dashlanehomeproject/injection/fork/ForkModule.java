@@ -5,9 +5,9 @@ import android.content.Context;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractorImpl;
 import com.robined.dashlanehomeproject.data.fork.network.ForkService;
-import com.robined.dashlanehomeproject.ui.fork.ForkPresenterImpl;
+import com.robined.dashlanehomeproject.ui.fork.ForkListPresenterImpl;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
-import com.robined.dashlanehomeproject.ui.fork.contracts.ForkPresenter;
 import com.squareup.picasso.Picasso;
 import dagger.Module;
 import dagger.Provides;
@@ -33,7 +33,7 @@ public class ForkModule {
     }
 
     @Provides
-    ForkPresenter provideForkPresenter(ForkPresenterImpl forkPresenter) {
+    ForkListPresenter provideForkPresenter(ForkListPresenterImpl forkPresenter) {
         return forkPresenter;
     }
 
