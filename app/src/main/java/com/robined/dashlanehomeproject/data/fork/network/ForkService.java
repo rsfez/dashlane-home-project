@@ -1,7 +1,7 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.data.fork.network;
 
 
-import com.robined.dashlanehomeproject.models.Fork;
+import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

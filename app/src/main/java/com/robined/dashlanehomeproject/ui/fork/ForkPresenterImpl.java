@@ -1,10 +1,12 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.ui.fork;
 
 
-import com.robined.dashlanehomeproject.ForkInteractor.OnForkListFetchedListener;
-import com.robined.dashlanehomeproject.models.Fork;
-import com.robined.dashlanehomeproject.ui.views.ForkListView;
-import com.robined.dashlanehomeproject.ui.views.ForkRowView;
+import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
+import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor.OnForkListFetchedListener;
+import com.robined.dashlanehomeproject.data.fork.entities.Fork;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkListView;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkPresenter;
+import com.robined.dashlanehomeproject.ui.fork.contracts.ForkRowView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +34,8 @@ public class ForkPresenterImpl implements ForkPresenter, OnForkListFetchedListen
     @Override
     public void onBindForkViewHolderAtPosition(int position, ForkRowView forkRowView) {
         Fork fork = mForkList.get(position);
-        forkRowView.setOwnerName(fork.owner.login);
-        forkRowView.displayPictureFromUrl(fork.owner.avatar_url);
+        forkRowView.setOwnerName(fork.mForkOwner.login);
+        forkRowView.displayPictureFromUrl(fork.mForkOwner.avatar_url);
     }
 
     @Override

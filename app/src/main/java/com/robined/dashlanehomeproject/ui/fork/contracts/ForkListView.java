@@ -1,4 +1,4 @@
-package com.robined.dashlanehomeproject.ui.views;
+package com.robined.dashlanehomeproject.ui.fork.contracts;
 
 
 public interface ForkListView {

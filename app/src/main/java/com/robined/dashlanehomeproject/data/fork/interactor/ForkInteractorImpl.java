@@ -1,8 +1,9 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.data.fork.interactor;
 
 
 import android.support.annotation.NonNull;
-import com.robined.dashlanehomeproject.models.Fork;
+import com.robined.dashlanehomeproject.data.fork.entities.Fork;
+import com.robined.dashlanehomeproject.data.fork.network.ForkService;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;

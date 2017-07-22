@@ -1,7 +1,5 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.ui.fork.contracts;
 
-
-import com.robined.dashlanehomeproject.ui.views.ForkRowView;
 
 public interface ForkPresenter {
     void getForkList();

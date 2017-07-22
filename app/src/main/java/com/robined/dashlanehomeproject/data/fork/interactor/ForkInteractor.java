@@ -1,7 +1,7 @@
-package com.robined.dashlanehomeproject;
+package com.robined.dashlanehomeproject.data.fork.interactor;
 
 
-import com.robined.dashlanehomeproject.models.Fork;
+import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import java.util.List;
 
 public interface ForkInteractor {
