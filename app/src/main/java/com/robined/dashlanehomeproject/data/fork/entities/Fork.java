@@ -1,13 +1,14 @@
 package com.robined.dashlanehomeproject.data.fork.entities;
 
 
+import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import org.parceler.Parcel;
 
 @Parcel
 public class Fork {
-    public String full_name;
-    public String description;
-    public Date created_at;
-    public ForkOwner owner;
+    @SerializedName("full_name") public String mFullName;
+    @SerializedName("description") public String mDescription;
+    @SerializedName("created_at") public Date mCreatedAt;
+    @SerializedName("owner") public ForkOwner mOwner;
 }

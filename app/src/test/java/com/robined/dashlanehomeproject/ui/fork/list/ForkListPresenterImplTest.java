@@ -53,9 +53,9 @@ public class ForkListPresenterImplTest {
         ForkOwner forkOwner = new ForkOwner();
         final String login = "John";
         final String avatarUrl = "https://test.org/pic.png";
-        forkOwner.login = login;
-        forkOwner.avatar_url = avatarUrl;
-        fork.owner = forkOwner;
+        forkOwner.mLogin = login;
+        forkOwner.mAvatarUrl = avatarUrl;
+        fork.mOwner = forkOwner;
         List<Fork> mockForkList = Arrays.asList(mock(Fork.class), fork);
         mForkListPresenter.onForkListFetchedSuccess(mockForkList);
 

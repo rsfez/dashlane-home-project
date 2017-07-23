@@ -1,10 +1,11 @@
 package com.robined.dashlanehomeproject.data.fork.entities;
 
 
+import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 @Parcel
 public class ForkOwner {
-    public String login;
-    public String avatar_url;
+    @SerializedName("login") public String mLogin;
+    @SerializedName("avatar_url") public String mAvatarUrl;
 }

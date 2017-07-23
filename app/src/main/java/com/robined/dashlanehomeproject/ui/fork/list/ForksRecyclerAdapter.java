@@ -18,11 +18,11 @@ import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkRowView;
 import com.squareup.picasso.Picasso;
 
-public class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdapter.ForkViewHolder> {
+class ForksRecyclerAdapter extends RecyclerView.Adapter<ForksRecyclerAdapter.ForkViewHolder> {
     private final ForkListPresenter mForkListPresenter;
     private final Picasso mPicasso;
 
-    public ForksRecyclerAdapter(ForkListPresenter forkListPresenter, Picasso picasso) {
+    ForksRecyclerAdapter(ForkListPresenter forkListPresenter, Picasso picasso) {
         mForkListPresenter = forkListPresenter;
         mPicasso = picasso;
     }

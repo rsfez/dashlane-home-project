@@ -24,10 +24,10 @@ public class ForkDetailsPresenterImpl implements ForkDetailsPresenter {
     public void displayForkParcelable(Parcelable forkParcelable) {
         Fork fork = Parcels.unwrap(forkParcelable);
 
-        mForkDetailsView.setOwnerName(fork.owner.login);
-        mForkDetailsView.displayPictureFromUrl(fork.owner.avatar_url);
-        mForkDetailsView.setForkFullName(fork.full_name);
-        mForkDetailsView.setCreationDate(mForkDateFormat.getReadableDate(fork.created_at));
-        mForkDetailsView.setDescription(fork.description);
+        mForkDetailsView.setOwnerName(fork.mOwner.mLogin);
+        mForkDetailsView.displayPictureFromUrl(fork.mOwner.mAvatarUrl);
+        mForkDetailsView.setForkFullName(fork.mFullName);
+        mForkDetailsView.setCreationDate(mForkDateFormat.getReadableDate(fork.mCreatedAt));
+        mForkDetailsView.setDescription(fork.mDescription);
     }
 }
