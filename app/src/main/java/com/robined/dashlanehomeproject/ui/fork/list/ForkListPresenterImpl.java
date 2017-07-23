@@ -16,7 +16,7 @@ import org.parceler.Parcels;
 public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetchedListener {
     private final ForkInteractor mForkInteractor;
     private final ForkListView mForkListView;
-    private final List<Fork> mForkList;
+    final List<Fork> mForkList;
 
     @Inject
     ForkListPresenterImpl(ForkInteractor forkInteractor, ForkListView forkListView) {
