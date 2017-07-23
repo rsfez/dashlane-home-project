@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">DashlaneHomeProject</string>
+  <string name="could_not_fetch_forks_error">Could not fetch fork list. Please, try again later!</string>
 </resources>

@@ -27,6 +27,7 @@ public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetch
 
     @Override
     public void getForkList() {
+        mForkListView.setLoadingState(true);
         mForkInteractor.getForkList("DefinitelyTyped", this);
     }
 
@@ -51,11 +52,13 @@ public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetch
     public void onForkListFetchedSuccess(List<Fork> forkList) {
         mForkList.clear();
         mForkList.addAll(forkList);
-        mForkListView.refreshData();
+        mForkListView.onDataReady();
+        mForkListView.setLoadingState(false);
     }
 
     @Override
     public void onForkListFetchedError() {
-
+        mForkListView.showError();
+        mForkListView.setLoadingState(false);
     }
 }
