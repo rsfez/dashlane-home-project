@@ -1,21 +1,21 @@
 package com.robined.dashlanehomeproject.ui.fork.details;
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.injection.fork.details.ForkDetailsModule;
+import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.ui.fork.details.contracts.ForkDetailsPresenter;
 import com.robined.dashlanehomeproject.ui.fork.details.contracts.ForkDetailsView;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
-public class ForkDetailsActivity extends Activity implements ForkDetailsView {
+public class ForkDetailsActivity extends AppCompatActivity implements ForkDetailsView {
     public static final String FORK_PARCEL_KEY = "FORK_PARCEL_KEY";
 
     @Inject Picasso mPicasso;

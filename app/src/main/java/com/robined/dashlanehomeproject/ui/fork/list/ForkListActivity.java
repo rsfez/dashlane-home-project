@@ -20,8 +20,9 @@ public class ForkListActivity extends AppCompatActivity {
         if(forkListFragment == null) {
             forkListFragment = new ForkListFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.fork_list_fragment_placeholder, forkListFragment, ForkListFragment.FORK_LIST_FRAGMENT_TAG)
-                    .commit();
+                    .replace(R.id.fork_list_fragment_placeholder,
+                            forkListFragment,
+                            ForkListFragment.FORK_LIST_FRAGMENT_TAG).commit();
         }
     }
 }

@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.injection.fork.list.ForkListModule;
-import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
+import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
+import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
@@ -32,6 +32,8 @@ public class ForkListFragment extends Fragment implements ForkListView, OnRefres
     private ForksRecyclerAdapter mForksRecyclerAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mForkRecyclerView;
+
+    private boolean mGetForkListCalled = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,8 +57,9 @@ public class ForkListFragment extends Fragment implements ForkListView, OnRefres
         setupRefreshLayout(view);
         setupRecyclerView(view);
 
-        if(savedInstanceState == null) {
+        if(!mGetForkListCalled) {
             mForkListPresenter.getForkList();
+            mGetForkListCalled = true;
         }
     }
 
