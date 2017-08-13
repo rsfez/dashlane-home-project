@@ -42,7 +42,9 @@ public class ForkListFragment extends BaseFragment implements ForkListView, OnRe
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkListPresenter, mPicasso);
+        if(mForksRecyclerAdapter == null) {
+            mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkListPresenter, mPicasso);
+        }
     }
 
     @Nullable
