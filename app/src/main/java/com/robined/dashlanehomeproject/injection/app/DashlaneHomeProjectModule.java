@@ -1,37 +1,39 @@
 package com.robined.dashlanehomeproject.injection.app;
 
 
-import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.robined.dashlanehomeproject.DashlaneHomeProject;
+import com.robined.dashlanehomeproject.injection.fork.details.ForkDetailsActivityModule;
+import com.robined.dashlanehomeproject.injection.fork.list.ForkListActivityModule;
+import com.robined.dashlanehomeproject.injection.scopes.PerActivity;
+import com.robined.dashlanehomeproject.ui.fork.details.ForkDetailsActivity;
+import com.robined.dashlanehomeproject.ui.fork.list.ForkListActivity;
 import dagger.Module;
 import dagger.Provides;
+import dagger.android.AndroidInjectionModule;
+import dagger.android.ContributesAndroidInjector;
 import javax.inject.Singleton;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module
-public class DashlaneHomeProjectModule {
-    private final DashlaneHomeProject mDashlaneHomeProject;
+@Module(includes = AndroidInjectionModule.class)
+abstract class DashlaneHomeProjectModule {
+    @PerActivity
+    @ContributesAndroidInjector(modules = ForkListActivityModule.class)
+    abstract ForkListActivity forkListActivityInjector();
 
-    public DashlaneHomeProjectModule(DashlaneHomeProject dashlaneHomeProject) {
-        mDashlaneHomeProject = dashlaneHomeProject;
-    }
+    @PerActivity
+    @ContributesAndroidInjector(modules = ForkDetailsActivityModule.class)
+    abstract ForkDetailsActivity forkDetailsActivityInjector();
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit() {
+    static Retrofit provideRetrofit() {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
 
         return new Retrofit.Builder().baseUrl("https://api.github.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson)).build();
-    }
-
-    @Provides
-    @Singleton Context provideApplicationContext() {
-        return mDashlaneHomeProject.getApplicationContext();
     }
 }

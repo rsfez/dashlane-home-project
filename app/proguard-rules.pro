@@ -45,3 +45,6 @@
 
 # Picasso
 -dontwarn com.squareup.okhttp.**
+
+# Dagger
+-dontwarn com.google.errorprone.annotations.*

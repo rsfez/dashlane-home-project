@@ -1,7 +1,7 @@
 package com.robined.dashlanehomeproject.ui.fork.list;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,17 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import com.robined.dashlanehomeproject.DashlaneHomeProject;
 import com.robined.dashlanehomeproject.R;
-import com.robined.dashlanehomeproject.injection.fork.list.ForkListModule;
-import com.robined.dashlanehomeproject.injection.utils.PicassoModule;
+import com.robined.dashlanehomeproject.injection.base.BaseFragment;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 
 
-public class ForkListFragment extends Fragment implements ForkListView, OnRefreshListener {
+public class ForkListFragment extends BaseFragment implements ForkListView, OnRefreshListener {
     public static final String FORK_LIST_FRAGMENT_TAG = "FORK_LIST_FRAGMENT_TAG";
 
     @Inject ForkListPresenter mForkListPresenter;
@@ -38,10 +36,12 @@ public class ForkListFragment extends Fragment implements ForkListView, OnRefres
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((DashlaneHomeProject) getActivity().getApplicationContext())
-                .getDashlaneHomeProjectComponent()
-                .plus(new ForkListModule(this), new PicassoModule()).inject(this);
         setRetainInstance(true);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
         mForksRecyclerAdapter = new ForksRecyclerAdapter(mForkListPresenter, mPicasso);
     }
 
