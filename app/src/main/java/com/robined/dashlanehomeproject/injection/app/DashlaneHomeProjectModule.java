@@ -12,11 +12,11 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.ContributesAndroidInjector;
+import io.reactivex.schedulers.Schedulers;
 import javax.inject.Singleton;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.schedulers.Schedulers;
 
 @Module(includes = AndroidInjectionModule.class)
 abstract class DashlaneHomeProjectModule {
@@ -36,7 +36,7 @@ abstract class DashlaneHomeProjectModule {
                 .create();
 
         return new Retrofit.Builder().baseUrl("https://api.github.com/")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create(gson)).build();
     }
 }

@@ -73,6 +73,7 @@ public class ForkListFragment extends BaseFragment implements ForkListView, OnRe
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mForkListPresenter.unsubscribe();
         mForkRecyclerView.setAdapter(null);
     }
 

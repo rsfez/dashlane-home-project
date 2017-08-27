@@ -8,6 +8,8 @@ import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor.OnFor
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListPresenter;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkRowView;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -16,12 +18,14 @@ import org.parceler.Parcels;
 public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetchedListener {
     private final ForkInteractor mForkInteractor;
     private final ForkListView mForkListView;
+    final CompositeDisposable mCompositeDisposable;
     final List<Fork> mForkList;
 
     @Inject
     ForkListPresenterImpl(ForkInteractor forkInteractor, ForkListView forkListView) {
         mForkInteractor = forkInteractor;
         mForkListView = forkListView;
+        mCompositeDisposable = new CompositeDisposable();
         mForkList = new ArrayList<>();
     }
 
@@ -46,6 +50,16 @@ public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetch
     @Override
     public Parcelable getForkAtPositionAsParcelable(int adapterPosition) {
         return Parcels.wrap(mForkList.get(adapterPosition));
+    }
+
+    @Override
+    public void unsubscribe() {
+        mCompositeDisposable.dispose();
+    }
+
+    @Override
+    public void onSubscribe(Disposable disposable) {
+        mCompositeDisposable.add(disposable);
     }
 
     @Override

@@ -8,4 +8,5 @@ public interface ForkListPresenter {
     int getForkCount();
     void onBindForkViewHolderAtPosition(int position, ForkRowView forkRowView);
     Parcelable getForkAtPositionAsParcelable(int adapterPosition);
+    void unsubscribe();
 }

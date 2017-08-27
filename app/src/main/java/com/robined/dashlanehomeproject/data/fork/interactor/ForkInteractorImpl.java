@@ -1,16 +1,16 @@
 package com.robined.dashlanehomeproject.data.fork.interactor;
 
 
-import android.support.annotation.NonNull;
 import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import com.robined.dashlanehomeproject.data.fork.network.ForkService;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import java.util.List;
 import javax.inject.Inject;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class ForkInteractorImpl implements ForkInteractor, Callback<List<Fork>> {
+public class ForkInteractorImpl implements ForkInteractor, Observer<List<Fork>> {
     private final ForkService mForkService;
     private OnForkListFetchedListener mListener;
 
@@ -21,13 +21,17 @@ public class ForkInteractorImpl implements ForkInteractor, Callback<List<Fork>> 
     @Override
     public void getForkList(String repo, OnForkListFetchedListener listener) {
         mListener = listener;
-        mForkService.getForkList(repo).enqueue(this);
+        mForkService.getForkList(repo).observeOn(AndroidSchedulers.mainThread()).subscribe(this);
     }
 
     @Override
-    public void onResponse(@NonNull Call<List<Fork>> call, @NonNull Response<List<Fork>> response) {
-        List<Fork> forkList = response.body();
-        if(response.isSuccessful() && forkList != null) {
+    public void onSubscribe(@NonNull Disposable d) {
+        mListener.onSubscribe(d);
+    }
+
+    @Override
+    public void onNext(@NonNull List<Fork> forkList) {
+        if(forkList != null) {
             mListener.onForkListFetchedSuccess(forkList);
         } else {
             mListener.onForkListFetchedError();
@@ -35,7 +39,10 @@ public class ForkInteractorImpl implements ForkInteractor, Callback<List<Fork>> 
     }
 
     @Override
-    public void onFailure(@NonNull Call<List<Fork>> call, @NonNull Throwable t) {
+    public void onError(@NonNull Throwable e) {
         mListener.onForkListFetchedError();
     }
+
+    @Override
+    public void onComplete() {}
 }

@@ -1,6 +1,8 @@
 package com.robined.dashlanehomeproject.ui.fork.list;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -9,6 +11,7 @@ import com.robined.dashlanehomeproject.data.fork.entities.ForkOwner;
 import com.robined.dashlanehomeproject.data.fork.interactor.ForkInteractor;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkListView;
 import com.robined.dashlanehomeproject.ui.fork.list.contracts.ForkRowView;
+import io.reactivex.disposables.Disposable;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;
@@ -63,6 +66,24 @@ public class ForkListPresenterImplTest {
 
         verify(mockForkRowView).setOwnerName(login);
         verify(mockForkRowView).displayPictureFromUrl(avatarUrl);
+    }
+
+    @Test
+    public void unsubscribe() {
+        assertFalse(mForkListPresenter.mCompositeDisposable.isDisposed());
+
+        mForkListPresenter.unsubscribe();
+
+        assertTrue(mForkListPresenter.mCompositeDisposable.isDisposed());
+    }
+
+    @Test
+    public void onSubscribe() {
+        Disposable disposable = mock(Disposable.class);
+
+        mForkListPresenter.onSubscribe(disposable);
+
+        assertEquals(1, mForkListPresenter.mCompositeDisposable.size());
     }
 
     @Test
