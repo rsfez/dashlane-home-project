@@ -37,7 +37,16 @@ public class ForkListPresenterImplTest {
         mForkListPresenter.getForkList();
 
         verify(mForkListView).setLoadingState(true);
-        verify(mForkInteractor).getForkList("DefinitelyTyped", mForkListPresenter);
+        verify(mForkInteractor).getForkList("DefinitelyTyped", "", mForkListPresenter);
+    }
+
+    @Test
+    public void searchFork() {
+        CharSequence query = "searchQuery";
+        mForkListPresenter.searchFork(query);
+
+        verify(mForkListView).setLoadingState(true);
+        verify(mForkInteractor).getForkList("DefinitelyTyped", query, mForkListPresenter);
     }
 
     @Test

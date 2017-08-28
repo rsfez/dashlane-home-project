@@ -94,6 +94,10 @@ public class ForkListFragment extends BaseFragment implements ForkListView, OnRe
                 Toast.LENGTH_SHORT).show();
     }
 
+    public void searchQuery(CharSequence query) {
+        mForkListPresenter.searchFork(query);
+    }
+
     private void setupRefreshLayout(View view) {
         mSwipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);

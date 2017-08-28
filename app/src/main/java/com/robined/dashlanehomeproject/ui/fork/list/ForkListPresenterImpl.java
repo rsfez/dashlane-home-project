@@ -31,8 +31,13 @@ public class ForkListPresenterImpl implements ForkListPresenter, OnForkListFetch
 
     @Override
     public void getForkList() {
+        searchFork("");
+    }
+
+    @Override
+    public void searchFork(CharSequence query) {
         mForkListView.setLoadingState(true);
-        mForkInteractor.getForkList("DefinitelyTyped", this);
+        mForkInteractor.getForkList("DefinitelyTyped", query, this);
     }
 
     @Override

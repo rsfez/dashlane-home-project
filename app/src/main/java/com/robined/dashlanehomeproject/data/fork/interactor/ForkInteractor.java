@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable;
 import java.util.List;
 
 public interface ForkInteractor {
-    void getForkList(String repo, OnForkListFetchedListener listener);
+    void getForkList(String repo, CharSequence searchQuery, OnForkListFetchedListener listener);
 
     interface OnForkListFetchedListener {
         void onSubscribe(Disposable disposable);

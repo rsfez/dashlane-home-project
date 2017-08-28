@@ -3,6 +3,7 @@ package com.robined.dashlanehomeproject.data.fork.interactor;
 
 import com.robined.dashlanehomeproject.data.fork.entities.Fork;
 import com.robined.dashlanehomeproject.data.fork.network.ForkService;
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -19,9 +20,15 @@ public class ForkInteractorImpl implements ForkInteractor, Observer<List<Fork>> 
     }
 
     @Override
-    public void getForkList(String repo, OnForkListFetchedListener listener) {
+    public void getForkList(String repo, CharSequence searchQuery, OnForkListFetchedListener listener) {
         mListener = listener;
-        mForkService.getForkList(repo).observeOn(AndroidSchedulers.mainThread()).subscribe(this);
+        mForkService.getForkList(repo)
+                .flatMap(Observable::fromIterable)
+                .filter(fork -> fork.mOwner.mLogin.contains(searchQuery))
+                .toList()
+                .toObservable()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this);
     }
 
     @Override
